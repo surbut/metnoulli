@@ -428,7 +428,7 @@ def compare_with_without_interactions(model, patients, molecular_features, patie
     ax2.grid(axis='y', alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('/mnt/user-data/outputs/interaction_impact.png', dpi=300, bbox_inches='tight')
+    plt.savefig('interaction_impact.png', dpi=300, bbox_inches='tight')
     print("\n   ✅ Saved: interaction_impact.png")
     plt.show()
     
