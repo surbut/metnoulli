@@ -1,0 +1,13 @@
+prefix=/Users/sarahurbut/metnoulli/.conda
+exec_prefix=/Users/sarahurbut/metnoulli/.conda
+libdir=/Users/sarahurbut/metnoulli/.conda/lib
+sharedlibdir=/Users/sarahurbut/metnoulli/.conda/lib
+includedir=/Users/sarahurbut/metnoulli/.conda/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
