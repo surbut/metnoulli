@@ -43,6 +43,9 @@ from metnoulli_latent_model import (  # type: ignore  # noqa: E402
     train_metnoulli_model,
 )
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 @dataclass
 class PreparedDataset:
@@ -271,6 +274,21 @@ def main(plot: bool = False) -> None:
 
     tp, fp, fn, tn = diagnostics["confusion_matrix"]
     print(f"Confusion matrix (TP, FP, FN, TN): ({tp}, {fp}, {fn}, {tn})")
+
+    if plot:
+        cm = np.array([[tp, fp], [fn, tn]])
+        plt.figure(figsize=(4, 3))
+        sns.heatmap(
+            cm,
+            annot=True,
+            fmt="d",
+            cmap="Blues",
+            xticklabels=["Predicted met", "Predicted no met"],
+            yticklabels=["Actual met", "Actual no met"],
+        )
+        plt.title("At-risk confusion matrix")
+        plt.tight_layout()
+        plt.show()
 
 
 if __name__ == "__main__":

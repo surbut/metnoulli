@@ -274,7 +274,8 @@ def plot_simulation_outputs(simulation: Dict[str, np.ndarray]) -> None:
     # ------------------------------------------------------------------ #
     fig_probs, ax_probs = plt.subplots(figsize=(10, 4))
     site_idx = 2  # highlight site 3
-    for i in range(probs.shape[0]):
+    max_patients_plot = min(5, probs.shape[0])
+    for i in range(max_patients_plot):
         ax_probs.plot(
             time,
             probs[i, site_idx],
@@ -293,9 +294,9 @@ def plot_simulation_outputs(simulation: Dict[str, np.ndarray]) -> None:
     # Cumulative incidence curves for highlighted site
     # ------------------------------------------------------------------ #
     fig_cum, ax_cum = plt.subplots(figsize=(10, 4))
-    cumulative = probs[:, site_idx, :].copy()
+    cumulative = probs[:max_patients_plot, site_idx, :].copy()
     cumulative = 1 - np.cumprod(1 - cumulative, axis=1)
-    for i in range(probs.shape[0]):
+    for i in range(max_patients_plot):
         ax_cum.plot(
             time,
             cumulative[i],
